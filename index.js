@@ -1,8 +1,8 @@
-/*
-* @Author: it.song
-* @Date:   2018-11-20 10:18:08
-* @Last Modified by:   it.song
-* @Last Modified time: 2018-11-20 16:18:08
+/**
+ * @Author: it.song
+ * @Date:   2018-11-20 10:18:08
+ * @Last Modified by: it.song
+ * @Last Modified time: 2020-06-03 18:06:13
 */
 
 const BigInteger = require('big-integer')
@@ -86,7 +86,7 @@ function fillemptysegment(ipArr) {
 function stripLeadingZeroes(ipArr) {
   let ipArrLen = ipArr.length;
   for (let i = 0; i < ipArrLen; i++) {
-    segs = ipArr[i].split("");
+    let segs = ipArr[i].split("");
     for (let j = 0; j < 3; j++) {
       if ((segs[0] == "0") && (segs.length > 1)) {
         segs.splice(0, 1)
@@ -105,11 +105,6 @@ function stripLeadingZeroes(ipArr) {
  * @param {String} ipArr
  */
 function removeConsecutiveZeroes(ipArr) {
-  //ipArr => [ '2001', 'db8', '2002', '0', '0', '0', '0', '0' ]
-  //ipArr => [ '0', '0', '2002', '2300', '2002', '2002', '0', '0' ]
-  //ipArr => [ '2001', 'db8', '2002', '0', '0', '0', '2002', '2002' ]
-  //ipArr => [ '2001', 'db8', '2002', '0', '2002', '0', '2002', '0' ]
-  //ipArr => [ '2001', '0', '2002', '0', '0', '0', '0', '0' ]
   let finalZeroIndex = -1;//被清除0的开始位置
   let finalZeroNum = 0;//0的个数
   let findZeroflag = false; //发现0的标志
@@ -266,10 +261,9 @@ function makeLastAddress(prefix, firstAddress) {
   return resArray.join(":")
 }
 
-/*----------------------------------------------分割线----------------------------------------------------- */
-
 /**
  * 通过ip段计算下列值
+ * @return {Object} 
  * Compressed Address:	2001:db8::/48
  * Expanded Address:	2001:0db8:0000:0000:0000:0000:0000:0000/48
  * Prefix:	ffff:ffff:ffff:0000:0000:0000:0000:0000
@@ -318,16 +312,12 @@ function subnet_slashes(ipSeg, mask) {
 
   //计算生成的段总数
   let ipSegNum = Math.pow(2, mask - old_mask);
-  console.log(ipSegNum)
   if (mask < old_mask) {
     return `[ERROR] ${ipv6} Make sure the selected slashes fit into the given network`;
   }
 
-  //findprefix(old_mask) => ffff:ffff:ffff:0
-  //prefix => ffff:ffff:ffff:0000:0000:0000:0000:0000
   let prefix = expand(findprefix(old_mask) + "::");
   let expanded_Address = expand(prefixBitAndIPv6(prefix, ipv6));
-  console.log("expanded_Address", expanded_Address);
 
   let ipv6String16 = expanded_Address.replace(/:/g, "");
 
@@ -336,12 +326,10 @@ function subnet_slashes(ipSeg, mask) {
   let ipv6BigIntArray = new Array;
 
   ipv6BigIntArray[0] = ipv6BigInt.toString(16);
-  console.log(ipv6BigInt.toString(10))
   let resIPv6SegArray = [];
   resIPv6SegArray.push(formatIPv6Preferred(bigIntToIPv6(ipv6BigIntArray[0])) + "/" + mask);
 
-  for (let index = 1; index < 10; index++) {
-    // console.log(ipv6BigInt.add(offset).toString(10))
+  for (let index = 1; index < ipSegNum; index++) {
     ipv6BigIntArray[index] = ipv6BigInt.add(offset).toString(16);
     ipv6BigInt = ipv6BigInt.add(offset);
     resIPv6SegArray.push(formatIPv6Preferred(bigIntToIPv6(ipv6BigIntArray[index])) + "/" + mask);
@@ -376,10 +364,19 @@ function bigIntToIPv6(ipv6BigInt) {
   return ipv6Array.join(":")
 }
 
-
-// console.log(calculate("2001:db8:2002::/48"));
-// console.log(subnet_slashes("2001:db8:2002::/48", 52))
-
 exports.calculate = calculate;
 exports.subnet_slashes = subnet_slashes;
+
 exports.getStartIndex = getStartIndex;
+exports.checkipv6 = checkipv6;
+exports.assembleBestRepresentation = assembleBestRepresentation;
+exports.bigIntToIPv6 = bigIntToIPv6;
+exports.expand = expand;
+exports.trimColonsFromEnds = trimColonsFromEnds;
+exports.stripLeadingZeroes = stripLeadingZeroes;
+exports.removeConsecutiveZeroes = removeConsecutiveZeroes;
+exports.prefixBitAndIPv6 = prefixBitAndIPv6;
+exports.makeLastAddress = makeLastAddress;
+exports.formatIPv6Preferred = formatIPv6Preferred;
+exports.findprefix = findprefix;
+exports.fillemptysegment = fillemptysegment;

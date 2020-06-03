@@ -1,0 +1,25 @@
+{
+  "name": "ipv6-cal",
+  "version": "0.0.1",
+  "description": "IPV6 Arithmetic",
+  "main": "index.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songjian925/ipv6Arithmetic.git"
+  },
+  "keywords": [
+    "ipv6"
+  ],
+  "author": "songjian925",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songjian925/ipv6Arithmetic/issues"
+  },
+  "homepage": "https://github.com/songjian925/ipv6Arithmetic#readme",
+  "dependencies": {
+    "big-integer": "^1.6.48"
+  }
+}
