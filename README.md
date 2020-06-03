@@ -1,15 +1,15 @@
-# ipv6Arithmetic
+# ipv6-util
 
 ## Install
 ```bash
-> yarn add ipv6-cal
+> yarn add ipv6-util
 or
-> npm install --save ipv6-cal
+> npm install --save ipv6-util
 ```
 
 ## How To Use
 ```nodejs
-const ipv6 = require('ipv6-cal')
+const ipv6 = require('ipv6-util')
 
 console.log(ipv6.checkipv6("2401:3480:3000::11"))
 console.log(ipv6.checkipv6("2401:3480:3000::"))

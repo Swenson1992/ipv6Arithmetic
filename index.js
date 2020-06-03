@@ -1,8 +1,8 @@
 /**
- * @Author: it.song
+ * @Author: songjian925
  * @Date:   2018-11-20 10:18:08
- * @Last Modified by: it.song
- * @Last Modified time: 2020-06-03 18:06:13
+ * @Last Modified by: songjian925
+ * @Last Modified time: 2020-06-03 18:28:29
 */
 
 const BigInteger = require('big-integer')
