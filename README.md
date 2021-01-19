@@ -2,14 +2,14 @@
 
 ## Install
 ```bash
-> yarn add ipv6-util
+> yarn add ipv6-util-ts
 or
-> npm install --save ipv6-util
+> npm install --save ipv6-util-ts
 ```
 
 ## How To Use
 ```nodejs
-const ipv6 = require('ipv6-util')
+const ipv6 = require('ipv6-util-ts')
 
 console.log(ipv6.checkipv6("2401:3480:3000::11"))
 console.log(ipv6.checkipv6("2401:3480:3000::"))

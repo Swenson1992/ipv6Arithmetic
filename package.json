@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/songjian925/ipv6Arithmetic.git"
+    "url": "git+https://github.com/Swenson1992/ipv6Arithmetic.git"
   },
   "keywords": [
     "ipv6"
   ],
-  "author": "songjian925",
+  "author": "Swenson1992",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/songjian925/ipv6Arithmetic/issues"
+    "url": "https://github.com/Swenson1992/ipv6Arithmetic/issues"
   },
-  "homepage": "https://github.com/songjian925/ipv6Arithmetic#readme",
+  "homepage": "https://github.com/Swenson1992/ipv6Arithmetic#readme",
   "dependencies": {
     "big-integer": "^1.6.48"
   }
